@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+    <insert id="insertUser" parameterType="com.sefrinaldi.finaljavabe.database.model.User">
+        INSERT INTO USER (FIRSTNAME, LASTNAME, EMAIL, PASSWORD) VALUES
+        (#{firstName}, #{lastName}, #{email}, #{password});
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+    <resultMap id="result" type="com.sefrinaldi.finaljavabe.database.model.User">
+        <result property="id" column="ID"/>
+        <result property="fullName" column="FULLNAME"/>
+        <result property="lastName" column="LASTNAME"/>
+        <result property="email" column="EMAIL"/>
+        <result property="password" column="PASSWORD"/>
+    </resultMap>
+
+<!--    <select id="getAll" resultMap="result">-->
+<!--        SELECT * FROM SISWA;-->
+<!--    </select>-->
+
+    <select id="getById" parameterType="int" resultMap="result">
+        SELECT * FROM USER WHERE ID=#{id};
+    </select>
+
+    <select id="getByEmailPass" parameterType="String" resultMap="result">
+        SELECT * FROM USER WHERE EMAIL=#{email} AND PASSWORD=#{password};
+    </select>
+
+    <select id="getByEmail" parameterType="String" resultMap="result">
+        SELECT * FROM USER WHERE EMAIL=#{email};
+    </select>
+
+<!--    <select id="update" parameterType="com.sefrinaldi.assigment.model.Siswa">-->
+<!--        UPDATE SISWA SET NAME = #{name}, FULLNAME = #{fullname}, ADDRESS = #{address},-->
+<!--        STATUS = #{status}, PHYSICS = #{physics}, CALCULUS = #{calculus},-->
+<!--        BIOLOGI = #{biologi} WHERE ID = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="deleteById" parameterType="int">-->
+<!--        DELETE FROM SISWA WHERE ID = #{id};-->
+<!--    </select>-->
+</mapper>

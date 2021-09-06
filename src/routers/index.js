@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, Login } from '../pages';
+import { Home, Login, Splash } from '../pages';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +12,7 @@ class Router extends Component {
     }
     render() { 
         return ( 
-            <Stack.Navigator initialRouteName="Login">
+            <Stack.Navigator initialRouteName="Splash">
                 <Stack.Screen 
                     name="Home"
                     component={Home}
@@ -21,6 +21,11 @@ class Router extends Component {
                 <Stack.Screen 
                     name="Login"
                     component={Login}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen 
+                    name="Splash"
+                    component={Splash}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

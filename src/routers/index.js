@@ -12,7 +12,7 @@ class Router extends Component {
     }
     render() { 
         return ( 
-            <Stack.Navigator initialRouteName="Splash">
+            <Stack.Navigator initialRouteName="Login">
                 <Stack.Screen 
                     name="Home"
                     component={Home}

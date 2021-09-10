@@ -9,7 +9,13 @@ class Login extends Component {
         super(props);
         this.state = {}
     }
+
+    componentDidMount = () => {
+        // fetch()
+    }
+
     render() {
+        const { navigation } = this.props
         return (
             <View style={styles.container}>
                 <Image style={styles.image} source={require('../../assets/images/logo.png')} />
@@ -49,6 +55,15 @@ class Login extends Component {
                     type="Solid"
                     containerStyle={styles.button}
                 />
+
+                <View style={styles.viewText}>
+                    <Text
+                        style={styles.text}
+                        onPress={() => navigation.navigate('Register')}
+                    >
+                        Belum punya akun?
+                    </Text>
+                </View>
             </View>
         );
     }
@@ -80,5 +95,11 @@ const styles = StyleSheet.create({
         // width: 300,
         alignSelf: 'flex-end',
         marginRight: 50,
+    },
+    viewText: {
+        marginTop: 20,
+    },
+    text: {
+        fontSize: 18
     }
 })

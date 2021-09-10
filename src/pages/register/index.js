@@ -6,8 +6,33 @@ import { colors } from '../../utils';
 class Register extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: ""
+        }
     }
+
+    registerHandler = () => {
+        const user = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        fetch('http://localhost:8080/api/user/register', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        }).catch(error => console.log('error', error))
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -24,6 +49,7 @@ class Register extends Component {
                         />
                     }
                     inputContainerStyle={styles.input}
+                    onChangeText={firstname => this.setState({ firstname })}
                 />
 
                 <Input
@@ -37,6 +63,7 @@ class Register extends Component {
                         />
                     }
                     inputContainerStyle={styles.input}
+                    onChangeText={lastname => this.setState({ lastname })}
                 />
 
                 <Input
@@ -50,10 +77,12 @@ class Register extends Component {
                         />
                     }
                     inputContainerStyle={styles.input}
+                    onChangeText={email => this.setState({ email })}
                 />
 
                 <Input
                     placeholder='Password'
+                    secureTextEntry={true}
                     leftIcon={
                         <Icon
                             name='lock'
@@ -63,6 +92,7 @@ class Register extends Component {
                         />
                     }
                     inputContainerStyle={styles.input}
+                    onChangeText={password => this.setState({ password })}
                 />
 
                 <Button
@@ -71,6 +101,7 @@ class Register extends Component {
                     type="Solid"
                     containerStyle={styles.button}
                     buttonStyle={{ marginHorizontal: 10 }}
+                    onPress={this.registerHandler}
                 />
             </View>
         );

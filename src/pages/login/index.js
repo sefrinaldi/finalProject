@@ -35,6 +35,7 @@ class Login extends Component {
 
                 <Input
                     placeholder='Password'
+                    secureTextEntry={true}
                     leftIcon={
                         <Icon
                             name='lock'

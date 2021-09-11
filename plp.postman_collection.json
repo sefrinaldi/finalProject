@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "51c78733-5bb8-4043-bb85-6edfabdb1c5f",
+		"name": "plp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "make order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 87308764,\r\n    \"token\" : 20000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/api/customer/order",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"customer",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cek invoice",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8090/api/customer/invoice/123456",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"customer",
+						"invoice",
+						"123456"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

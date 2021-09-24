@@ -10,7 +10,7 @@ class Splash extends Component {
 
     componentDidMount = () => {
         setTimeout(()=> {
-            this.props.navigation.replace('Login')
+            this.props.navigation.replace('MyTabs')
         }, 3000)
     }
 

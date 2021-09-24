@@ -55,6 +55,7 @@ class Login extends Component {
                     titleStyle={{ fontSize: 25, color: colors.regular }}
                     type="Solid"
                     containerStyle={styles.button}
+                    onPress={()=> navigation.navigate('Home')}
                 />
 
                 <View style={styles.viewText}>
